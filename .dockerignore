@@ -1,0 +1,17 @@
+.git/
+.vscode/
+env/
+htmlcov/
+__pycache__/
+
+.coverage
+.docker/Dockerfile
+requirements/test.txt
+.*ignore
+.env*
+db.sqlite3
+*.yml
+*.yaml
+*.md
+*.cfg
+celerybeat-schedule

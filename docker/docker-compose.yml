@@ -1,0 +1,54 @@
+version: "3.8"
+
+volumes:
+    app_data:
+        name: app_data
+    app_broker:
+        name: app_broker
+
+services:
+    django: &django
+        image: dockerapp:development
+        command: /app/docker/start.sh server
+        depends_on:
+            - postgres
+        env_file:
+            - .env
+        ports:
+            - 8000:8000
+
+    postgres:
+        image: postgres:13.3-alpine
+        volumes:
+            - app_data:/var/lib/postgresql/data
+        environment:
+            POSTGRES_PASSWORD: postgres
+            POSTGRES_USER: postgres
+            POSTGRES_DB: postgres
+
+    redis:
+        image: redis:6.2.5-alpine
+        command: redis-server --appendonly yes
+        volumes:
+            - app_broker:/var/lib/redis/data
+
+    celery:
+        <<: *django
+        depends_on:
+            - django
+            - postgres
+            - redis
+        ports:
+            - 8001:8000
+        command: /app/docker/start.sh worker
+
+    beat:
+        <<: *django
+        depends_on:
+            - django
+            - postgres
+            - redis
+        ports:
+            - 8002:8000
+        command: /app/docker/start.sh beat
+
