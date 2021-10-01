@@ -33,7 +33,8 @@ from redis import RedisError
 
 
 try:
-    Redis.from_url("${CELERY_BROKER_URL}", db=0)
+    redis = Redis.from_url("${CELERY_BROKER_URL}", db=0)
+    redis.ping()
 except RedisError:
     sys.exit(-1)
 END
