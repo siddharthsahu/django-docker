@@ -1,7 +1,7 @@
 # DockerApp
 #### A test Django application with production-level docker setup.
 
-**Blog: https://medium.com/@siddharth.sahu/the-near-perfect-dockerfile-for-django-applications-8bc352a1e871**
+**Blog: https://bettersoftwarewithsid.com/the-near-perfect-dockerfile-for-django-applications**
 
 This project is to document production-level Docker setup. Please note that Django application is rudimentary and not fit for production.
 
@@ -29,5 +29,5 @@ The Django application has a simple view `dockerapp/core/views.py` linked to url
 ## Development
 This is a work in progress, hence further enhancements in all aspects of Docker in this project is expected. Any advice regarding improvement of Docker aspect is welcome and encouraged.
 
-For detailed discussion please refer to corresponding blog https://medium.com/@siddharth.sahu/the-near-perfect-dockerfile-for-django-applications-8bc352a1e871.
+For detailed discussion please refer to corresponding blog https://bettersoftwarewithsid.com/the-near-perfect-dockerfile-for-django-applications.
  
