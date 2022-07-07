@@ -15,4 +15,3 @@ def sample_view(request):
 
     except Exception as e:
         return HttpResponseServerError("Error encountered in triggering task")
-
